@@ -15,6 +15,7 @@ export const initialState = {
   filter: null,
 
   balance: null,
+  balanceCard: null,
   transactionCount: null,
   validationCount: null
 }
@@ -47,7 +48,8 @@ export function reducer (state = initialState, action) {
     }
     case 'RECEIVED_UPDATED_BALANCE': {
       return Object.assign({}, state, {
-        balance: action.msg.balance
+        balanceCard: action.msg.balanceCard,
+        balance: parseFloat(action.msg.balance)
       })
     }
     default:
@@ -63,11 +65,11 @@ const elements = {
   },
   '[data-selector="balance-card"]': {
     load ($el) {
-      return { balance: $el.html() }
+      return { balanceCard: $el.html(), balance: parseFloat($el.find('.current-balance-in-wei').attr('data-wei-value')) }
     },
     render ($el, state, oldState) {
       if (oldState.balance === state.balance) return
-      $el.empty().append(state.balance)
+      $el.empty().append(state.balanceCard)
       loadTokenBalanceDropdown()
       updateAllCalculatedUsdValues()
     }
@@ -130,4 +132,10 @@ if ($addressDetailsPage.length) {
     type: 'RECEIVED_NEW_BLOCK',
     msg: humps.camelizeKeys(msg)
   }))
+
+  addressChannel.push('get_balance', {})
+    .receive('ok', (msg) => store.dispatch({
+      type: 'RECEIVED_UPDATED_BALANCE',
+      msg: humps.camelizeKeys(msg)
+    }))
 }

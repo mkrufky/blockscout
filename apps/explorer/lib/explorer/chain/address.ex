@@ -30,6 +30,9 @@ defmodule Explorer.Chain.Address do
    * `names` - names known for the address
    * `inserted_at` - when this address was inserted
    * `updated_at` when this address was last updated
+
+   `fetched_coin_balance` and `fetched_coin_balance_block_number` may be updated when a new coin_balance row is fetched.
+    They may also be updated when the balance is fetched via the on demand fetcher.
   """
   @type t :: %__MODULE__{
           fetched_coin_balance: Wei.t(),

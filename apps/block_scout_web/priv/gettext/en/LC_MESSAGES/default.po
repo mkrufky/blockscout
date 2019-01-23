@@ -379,7 +379,7 @@ msgid "Enter the Solidity Contract Code below"
 msgstr ""
 
 #, elixir-format
-#: lib/block_scout_web/templates/address/_balance_card.html.eex:25
+#: lib/block_scout_web/templates/address/_balance_card.html.eex:28
 msgid "Error trying to fetch balances."
 msgstr ""
 
@@ -394,7 +394,7 @@ msgid "Error: (Awaiting internal transactions for reason)"
 msgstr ""
 
 #, elixir-format
-#: lib/block_scout_web/templates/address/_balance_card.html.eex:12
+#: lib/block_scout_web/templates/address/_balance_card.html.eex:13
 #: lib/block_scout_web/templates/internal_transaction/_tile.html.eex:16
 #: lib/block_scout_web/templates/layout/app.html.eex:51
 #: lib/block_scout_web/templates/transaction/_pending_tile.html.eex:19
@@ -415,7 +415,7 @@ msgid "Execute"
 msgstr ""
 
 #, elixir-format
-#: lib/block_scout_web/templates/address/_balance_card.html.eex:21
+#: lib/block_scout_web/templates/address/_balance_card.html.eex:24
 msgid "Fetching tokens..."
 msgstr ""
 
@@ -1549,4 +1549,9 @@ msgstr ""
 #, elixir-format
 #: lib/block_scout_web/templates/layout/_footer.html.eex:93
 msgid "Version"
+msgstr ""
+
+#, elixir-format
+#: lib/block_scout_web/templates/address/_balance_card.html.eex:4
+msgid "Last Updated: Block #"
 msgstr ""
