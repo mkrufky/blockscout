@@ -27,7 +27,7 @@ $dashboard-banner-network-plain-container-background-color: #4b021e; // stats bg
 
 
 // navigation
-.navbar { box-shadow: 0px 0px 30px 0px rgba(21, 53, 80, 0.12); } // header shadow
+.navbar { box-shadow: 0px 0px 30px 0px rgba(75, 2, 30, 0.12); } // header shadow
 $header-icon-border-color-hover: $tertiary; // top border on hover
 $header-icon-color-hover: $tertiary; // nav icon on hover
 .dropdown-item:hover, .dropdown-item:focus { background-color: $tertiary !important; } // dropdown item on hover
