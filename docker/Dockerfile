@@ -2,10 +2,12 @@ FROM bitwalker/alpine-elixir-phoenix:1.9.0
 
 RUN apk --no-cache --update add alpine-sdk gmp-dev automake libtool inotify-tools autoconf python
 
-EXPOSE 4000
+ARG BS_PORT
+EXPOSE $BS_HTTP_PORT
 
-ENV PORT=4000 \
-    MIX_ENV="prod" \
+ENV PORT=BS_HTTP_PORT
+
+ENV MIX_ENV="prod" \
     SECRET_KEY_BASE="RMgI4C1HSkxsEjdhtGMfwAHfyT6CKWXOgzCboJflfSm4jeAlic52io05KB6mqzc5"
 
 # Cache elixir deps

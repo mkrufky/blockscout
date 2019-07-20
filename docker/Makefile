@@ -4,6 +4,7 @@ DOCKER_IMAGE = blockscout_prod
 BS_CONTAINER_NAME = blockscout
 PG_CONTAINER_NAME = postgres
 PG_CONTAINER_IMAGE = postgres:10.6
+BS_HTTP_PORT = 4000
 PG_DB_PORT = 5432
 THIS_FILE = $(lastword $(MAKEFILE_LIST))
 
@@ -55,7 +56,7 @@ ifdef HAS_BLOCKSCOUT_IMAGE
 	@echo "==> Image exist. Using $(DOCKER_IMAGE)"
 else
 	@echo "==> No image found trying to build one..."
-	@docker build --build-arg COIN="$(COIN)" -f ./Dockerfile -t $(DOCKER_IMAGE) ../
+	@docker build --build-arg COIN="$(COIN)" --build-arg BS_HTTP_PORT="$(BS_HTTP_PORT)" -f ./Dockerfile -t $(DOCKER_IMAGE) ../
 endif
 
 migrate: build postgres
@@ -91,7 +92,7 @@ start: build postgres
 	@echo "==> Starting blockscout"
 	@docker run --rm --name $(BS_CONTAINER_NAME) \
 					$(BLOCKSCOUT_CONTAINNER_PARAMS) \
-					-p 4000:4000 \
+					-p 4000:$(BS_HTTP_PORT) \
 					$(DOCKER_IMAGE) /bin/sh -c "mix phx.server"
 
 run: start
